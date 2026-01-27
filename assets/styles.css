@@ -1,0 +1,41 @@
+/* Parent container */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Left input panel */
+.inputs {
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(5, 107, 107);
+    padding: 20px;
+    color: white;
+}
+
+/* Right content panel */
+.content {
+    width: 75vw;
+    padding: 20px;
+}
+
+/* Title */
+.start {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+button {
+    margin: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+/* Inputs */
+input {
+    margin: 5px;
+    padding: 5px;
+}
