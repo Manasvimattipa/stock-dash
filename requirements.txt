@@ -1,7 +1,8 @@
+streamlit
 dash
-pandas
-numpy
 plotly
-scikit-learn
+pandas
+yfinance
 statsmodels
+scikit-learn
 gunicorn
