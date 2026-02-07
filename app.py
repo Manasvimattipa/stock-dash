@@ -26,7 +26,13 @@ app.layout = html.Div([
         html.Hr(),
 
         html.Label("Select Date Range:", style={"color": "white"}),
-        dcc.DatePickerRange(id="date-range"),
+        dcc.DatePickerRange(
+            id="date-range"
+            min_date_allowed=pd.Timestamp("2010-01-01"),
+            max_date_allowed=pd.Timestamp.today(),
+            start_date=pd.Timestamp.today() - pd.Timedelta(days=180),
+            end_date=pd.Timestamp.today()
+        ),
 
         html.Br(), html.Br(),
 
@@ -103,6 +109,8 @@ def show_stock_price(n, stock, start, end):
         return ""
 
     df = yf.download(stock, start=start, end=end)
+    if df.empty:
+       return html.Div("No data available. Please select valid trading dates.")   
     df.columns = [c[0] if isinstance(c, tuple) else c for c in df.columns]
     df.reset_index(inplace=True)
 
@@ -130,6 +138,8 @@ def show_ema(n, stock, start, end):
         return ""
 
     df = yf.download(stock, start=start, end=end)
+    if df.empty:
+       return html.Div("No data available. Please select valid trading dates.")    
     df.columns = [c[0] if isinstance(c, tuple) else c for c in df.columns]
     df.reset_index(inplace=True)
 
@@ -159,6 +169,8 @@ def show_forecast(n, stock, start, end, days):
         return ""
 
     df = yf.download(stock, start=start, end=end)
+    if df.empty:
+       return html.Div("No data available. Please select valid trading dates.")   
     df.columns = [c[0] if isinstance(c, tuple) else c for c in df.columns]
     df.reset_index(inplace=True)
     df = df.tail(120) 
