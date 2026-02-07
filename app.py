@@ -106,6 +106,7 @@ def show_stock_price(n, stock, start, end):
     df.columns = [c[0] if isinstance(c, tuple) else c for c in df.columns]
     df.reset_index(inplace=True)
 
+
     fig = px.line(
         df,
         x="Date",
@@ -160,6 +161,7 @@ def show_forecast(n, stock, start, end, days):
     df = yf.download(stock, start=start, end=end)
     df.columns = [c[0] if isinstance(c, tuple) else c for c in df.columns]
     df.reset_index(inplace=True)
+    df = df.tail(120) 
 
     forecast_df = train_arima(df.set_index("Date")["Close"], days)
 
@@ -175,4 +177,4 @@ def show_forecast(n, stock, start, end, days):
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=False)
