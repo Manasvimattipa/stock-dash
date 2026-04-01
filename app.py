@@ -218,6 +218,5 @@ def show_forecast(n, stock, start, end, days):
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
-    app.run(debug=False)
     app.run(debug=True)
 
