@@ -114,10 +114,7 @@ def show_stock_price(n, stock, start, end):
 
     df = yf.download(stock, start=start, end=end)
 
-    if df.empty:
-       return html.Div("No data available. Please select valid trading dates.")   
-
-
+    
     # ✅ FIX: handle empty data
     if df.empty:
         return html.Div("No data available for selected date range")
@@ -218,5 +215,5 @@ def show_forecast(n, stock, start, end, days):
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
 
